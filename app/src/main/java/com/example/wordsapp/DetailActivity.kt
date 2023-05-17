@@ -24,8 +24,12 @@ import com.example.wordsapp.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 
+    //companion is associated with the DetailActivity class
     companion object {
+        // add a property for the letter constant
         const val LETTER = "letter"
+
+        // base URL for a Google search
         const val SEARCH_PREFIX = "https://www.google.com/search?q="
 
     }
@@ -44,6 +48,8 @@ class DetailActivity : AppCompatActivity() {
         // so toString() guarantees that the value will be a String
 //        val letterId = "A"
 //        val letterId = intent?.extras?.getString("letter").toString()
+
+        //get the letterId passed in from the intent
         val letterId = intent?.extras?.getString(LETTER).toString()
 
         val recyclerView = binding.recyclerView

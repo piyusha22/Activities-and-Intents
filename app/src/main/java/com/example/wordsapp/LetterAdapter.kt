@@ -17,12 +17,14 @@ package com.example.wordsapp
 
 import android.content.Intent
 import android.os.Build
+import android.telecom.Call
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -63,11 +65,21 @@ class LetterAdapter :
     override fun onBindViewHolder(holder: LetterViewHolder, position: Int) {
         val item = list.get(position)
         holder.button.text = item.toString()
+
+        // set the onClickListener for holder.button
         holder.button.setOnClickListener {
+
+            //get a reference to the context
             val context = holder.itemView.context
+
+           // create an explicit intent, passing in the context and the class name of the destination activity
             val intent = Intent(context, DetailActivity::class.java)
             //intent.putExtra("letter", holder.button.text.toString())
+
+            //call the putExtra method, passing in "letter" and the button text
             intent.putExtra(DetailActivity.LETTER, holder.button.text.toString())
+
+            //call the startActivity() method on the context object, passing in the intent
             context.startActivity(intent)
         }
     }

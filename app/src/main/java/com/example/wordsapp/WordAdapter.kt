@@ -83,9 +83,17 @@ class WordAdapter(private val letterId: String, context: Context) :
 
         // Set the text of the WordViewHolder
         holder.button.text = item
+
+        //call setOnClickListener() on the button and create a Uri for the search query
         holder.button.setOnClickListener {
+
+            //create a Uri from a String, use string formatting so that the word is appended to the SEARCH_PREFIX
             val queryUrl: Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}${item}")
+
+            // initialize a new intent object
             val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+
+            //launch another app, by calling startActivity()and pass in the intent
             context.startActivity(intent)
         }
 

@@ -30,6 +30,8 @@ import com.example.wordsapp.databinding.ActivityMainBinding
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
+
+    // Set the default value to true, as the linear layout manager will be used by default
     private var isLinearLayoutManager = true
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,6 +82,8 @@ class MainActivity : AppCompatActivity() {
             else ContextCompat.getDrawable(this, R.drawable.ic_linear_layout)
     }
 
+
+    //inflate the options menu and perform any additional setup
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.layout_menu, menu)
 
@@ -90,6 +94,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    //call chooseLayout() when the button is selected
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_switch_layout -> {
